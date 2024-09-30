@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>SnagaPiksela Blog | Home</title>
+</head>
+<body>
+  <h1>SnagaPiksela Blog</h1>
+  <a href="/login">Login</a>
+  <a href="/post">Create Post</a>
+
+  <% posts.forEach(post => { %>
+    <div class="post">
+      <h2><%= post.title %></h2>
+      <p><%= post.content %></p>
+      <% if (post.image) { %>
+        <img src="/uploads/<%= post.image %>" alt="Image for <%= post.title %>">
+      <% } %>
+    </div>
+  <% }) %>
+</body>
+</html>
