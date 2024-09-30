@@ -108,3 +108,19 @@ app.use((req, res, next) => {
 // Pokretanje servera
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+async function createAdminUser() {
+  const existingAdmin = await User.findOne({ username: 'admin' });
+  if (!existingAdmin) {
+    const hashedPassword = await bcrypt.hash('snagapikseladinadmin', 10);
+    const adminUser = new User({
+      username: 'admin',
+      password: hashedPassword
+    });
+    await adminUser.save();
+    console.log('Admin user created');
+  }
+}
+
+createAdminUser();
+
