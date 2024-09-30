@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// Koristi varijablu okruženja ili podesi default URI za lokalni razvoj
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/snagaPikselaBlog';
+// Konekcija na MongoDB bazu podataka
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/snaga_piksela_blog'; // Lokalno
 
 mongoose.connect(mongoUri, {
   useNewUrlParser: true,
@@ -10,6 +10,7 @@ mongoose.connect(mongoUri, {
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.log('MongoDB connection error:', err));
+
 
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
